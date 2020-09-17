@@ -15,14 +15,12 @@
     "prepare": "rm -rf dist && rollup -c",
     "start": "rollup -c -w"
   },
-  "dependencies": {
-    "apollo-link": "1.2.14",
-    "apollo-link-error": "1.1.13"
-  },
   "peerDependencies": {
+    "@apollo/client": "^3.2.0",
     "graphql": "^15.0.0"
   },
   "devDependencies": {
+    "@apollo/client": "^3.2.0",
     "@rollup/plugin-commonjs": "15.0.0",
     "@rollup/plugin-node-resolve": "9.0.0",
     "graphql": "^15.0.0",
