@@ -1,2 +1,2 @@
-export { errorLink } from "./links/errorLink";
-export { loggerLink } from "./links/loggerLink";
+export { errorLogger } from "./links/errorLogger";
+export { queryLogger } from "./links/queryLogger";
