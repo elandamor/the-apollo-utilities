@@ -1,5 +1,5 @@
 import { ApolloLink, NextLink, Operation } from "@apollo/client";
-import { formatMessage } from "./formatMessage";
+import { formatMessage } from "../utilities/formatMessage";
 
 export const loggerLink = new ApolloLink(
   (operation: Operation, forward: NextLink) => {

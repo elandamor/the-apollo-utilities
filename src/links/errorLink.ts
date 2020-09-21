@@ -1,6 +1,6 @@
 import { ErrorResponse, onError } from "@apollo/client/link/error";
-import { formatError } from "./formatError";
-import { formatMessage } from "./formatMessage";
+import { formatError } from "../utilities/formatError";
+import { formatMessage } from "../utilities/formatMessage";
 
 export const errorLink = onError(
   ({ graphQLErrors, networkError, operation }: ErrorResponse) => {

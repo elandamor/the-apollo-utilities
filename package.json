@@ -1,12 +1,12 @@
 {
-  "name": "the-apollo-utilities",
-  "version": "0.1.1",
-  "description": "Apollo client utilities",
+  "name": "the-apollo-links",
+  "version": "0.1.0",
+  "description": "Custom apollo links for use with ApolloGraphQL's apollo client",
   "author": "elandamor",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elandamor/the-apollo-utilities"
+    "url": "https://github.com/elandamor/the-apollo-links"
   },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
