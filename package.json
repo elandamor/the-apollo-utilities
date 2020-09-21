@@ -1,6 +1,6 @@
 {
   "name": "the-apollo-utilities",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "Custom apollo links for use with ApolloGraphQL's apollo client",
   "author": "elandamor",
   "license": "MIT",
