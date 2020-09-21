@@ -1,24 +1,22 @@
-import { onError } from "apollo-link-error";
-import { formatError } from "./formatError";
-import { formatMessage } from "./formatMessage";
+import { ErrorResponse, onError } from "@apollo/client/link/error";
+import { formatError } from "../utilities/formatError";
+import { formatMessage } from "../utilities/formatMessage";
 
 export const errorLink = onError(
-  ({ graphQLErrors, networkError, operation }: any) => {
+  ({ graphQLErrors, networkError, operation }: ErrorResponse) => {
     if (graphQLErrors) {
       const errorType = "graphQLError";
       const group = formatMessage(errorType, operation);
 
       console.groupCollapsed(...group);
 
-      graphQLErrors.map(({ message, path }: any) => {
+      graphQLErrors.map(({ message, path }) => {
         const error = formatError(message, path);
         console.log(...error);
         return { message, path };
       });
 
-      // TODO: Check if removing argument breaks intended functionality.
-      // @ts-ignore - Expects 0 arguments.
-      console.groupEnd(...group);
+      console.groupEnd();
     }
 
     if (networkError) {
@@ -30,9 +28,7 @@ export const errorLink = onError(
       const error = formatError(networkError.message);
       console.log(...error);
 
-      // TODO: Check if removing argument breaks intended functionality.
-      // @ts-ignore - Expects 0 arguments.
-      console.groupEnd(...group);
+      console.groupEnd();
     }
   }
 );

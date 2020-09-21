@@ -1,41 +1,39 @@
-import { prefersDarkMode } from './prefersDarkMode';
+import { Operation } from "@apollo/client";
+import { OperationTypeNode } from "graphql";
+import { prefersDarkMode } from "./prefersDarkMode";
 
 export const formatMessage = (
-  operationType: string,
-  operation: any,
-  elapsed?: any,
+  type: OperationTypeNode | "graphQLError" | "networkError",
+  operation: Operation,
+  elapsed?: number
 ) => {
   const color = prefersDarkMode()
     ? {
-        gray: '#AAA',
-        black: '#DDD',
+        light: "#AAA",
+        dark: "#DDD",
       }
     : {
-        gray: 'gray',
-        black: '#222',
+        light: "gray",
+        dark: "#222",
       };
 
   const headerCss = [
-    `color: ${color.gray}; font-weight: lighter`, // title
+    `color: ${color.light}; font-weight: lighter`, // title
     `color: ${
-      operationType === 'query'
-        ? '#02B875'
-        : operationType === 'mutation'
-        ? '#03A9F4'
-        : '#FF3567'
-    };`, // operationType
-    `color: ${color.black};`, // operationName
+      type === "query" ? "#02B875" : type === "mutation" ? "#03A9F4" : "#FF3567"
+    };`, // type
+    `color: ${color.dark};`, // operationName
   ];
 
-  const parts = ['%c apollo'];
+  const parts = ["%c apollo"];
 
-  parts.push(`%c${operationType}`);
+  parts.push(`%c${type}`);
   parts.push(`%c${operation.operationName}`);
 
   if (elapsed) {
     parts.push(`%c(in ${elapsed} ms)`);
-    headerCss.push(`color: ${color.gray}; font-weight: lighter;`); // time
+    headerCss.push(`color: ${color.light}; font-weight: lighter;`); // time
   }
 
-  return [parts.join(' '), ...headerCss];
+  return [parts.join(" "), ...headerCss];
 };
